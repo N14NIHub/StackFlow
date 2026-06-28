@@ -20,7 +20,6 @@
             <div class="main-grid">
                 <section class="controls">
                     <h2>Operasi</h2>
-
                     <div class="control-group">
                         <label for="pushValue">Nilai Push:</label>
                         <div class="input-group">
@@ -28,12 +27,10 @@
                             <button id="pushBtn" class="btn btn-primary">Push</button>
                         </div>
                     </div>
-
                     <div class="control-group">
                         <button id="popBtn" class="btn btn-danger">Pop</button>
                         <button id="peekBtn" class="btn btn-secondary">Peek</button>
                     </div>
-
                     <div class="control-group">
                         <div class="status" id="status">Siap</div>
                     </div>
@@ -49,8 +46,7 @@
                         </div>
                         <div class="terminal-content" id="stackDisplay">
                             <div class="stack-viewport">
-                                <div class="stack-container" id="stackContainer">
-                                </div>
+                                <div class="stack-container" id="stackContainer"></div>
                             </div>
                         </div>
                         <div class="terminal-footer">
@@ -67,10 +63,10 @@
                         <span class="dot"></span>
                         <span class="dot"></span>
                         <span class="dot"></span>
+                        <button id="clearHistoryBtn" class="btn-clear" title="Hapus Riwayat">&#10005;</button>
                     </div>
-                    <div class="terminal-content history-content" id="historyDisplay">
-                        <div class="history-list" id="historyList">
-                        </div>
+                    <div class="terminal-content" id="historyDisplay">
+                        <div class="history-list" id="historyList"></div>
                     </div>
                 </div>
             </section>
@@ -80,7 +76,6 @@
             <p>StackFlow - Visualisasi Stack (TUMPUKAN)</p>
         </footer>
     </div>
-
     <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>
