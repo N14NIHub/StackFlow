@@ -314,15 +314,57 @@ footer {
 @media (max-width: 768px) {
     body { padding: 0; }
     .container { border-radius: 0; border: none; height: 100vh; }
-    main { padding: 8px; }
+    main { padding: 6px; }
+
     .main-grid {
         grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr;
+        grid-template-rows: auto auto 1fr;
+        gap: 6px;
     }
+
     .left-column {
         display: contents;
     }
+
     .stack-visualization { order: 1; }
     .controls { order: 2; }
-    .history { order: 3; min-height: 200px; }
+    .history { order: 3; min-height: 0; flex: 1; }
+
+    /* Compact header */
+    header { padding: 8px 10px; }
+    header h1 { font-size: 1.2em; }
+    header p { font-size: 0.75em; }
+
+    /* Compact sections */
+    section h2 { padding: 6px 8px; font-size: 0.8em; }
+
+    /* Compact terminal */
+    .terminal-header { display: none; }
+    .terminal-container { padding: 4px; }
+    .terminal-content { padding: 4px; }
+    .terminal-footer { padding: 4px 6px; font-size: 0.75em; }
+
+    /* Compact stack */
+    .stack-viewport { height: 200px; }
+    .stack-element { padding: 6px 8px; font-size: 0.8em; max-width: 140px; }
+
+    /* Compact controls */
+    .control-group { padding: 6px 8px; gap: 6px; }
+    .control-group label { font-size: 0.8em; }
+    .input-group input { padding: 6px 8px; font-size: 0.85em; }
+    .btn { padding: 6px 10px; font-size: 0.8em; }
+
+    /* Compact status */
+    .status { padding: 6px 8px; font-size: 0.8em; }
+
+    /* Compact history */
+    .history { max-height: 200px; }
+    .history-item { padding: 4px 6px; font-size: 0.75em; }
+
+    /* Compact scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-thumb { background: #75715E; border-radius: 2px; }
+
+    /* Compact footer */
+    footer { padding: 4px; font-size: 0.7em; }
 }
