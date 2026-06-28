@@ -190,7 +190,15 @@ section h2 {
 }
 
 .stack-element.push-anim {
-    animation: pushSlide 0.3s ease-out;
+    animation: pushColor 0.8s ease-out;
+}
+
+@keyframes pushColor {
+    0% { border-color: #A6E22E; color: #A6E22E; box-shadow: 0 0 15px #A6E22E; }
+    25% { border-color: #F92672; color: #F92672; box-shadow: 0 0 15px #F92672; }
+    50% { border-color: #66D9EF; color: #66D9EF; box-shadow: 0 0 15px #66D9EF; }
+    75% { border-color: #FD971F; color: #FD971F; box-shadow: 0 0 15px #FD971F; }
+    100% { border-color: #A6E22E; color: #A6E22E; box-shadow: 0 0 15px #A6E22E; }
 }
 
 .stack-element.pop-anim {
