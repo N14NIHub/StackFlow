@@ -95,15 +95,15 @@ function handlePop() {
     showStatus('Pop...', 'loading');
     apiCall('/api/stack/pop', 'POST').then(function (data) {
         if (data.success) {
-            var topEl = stackContainer.lastElementChild;
+            var topEl = stackContainer.firstElementChild;
             if (topEl) {
                 topEl.classList.add('pop-anim');
                 setTimeout(function () {
-                    currentStack.pop();
+                    currentStack.shift();
                     renderStack();
                 }, 250);
             } else {
-                currentStack.pop();
+                currentStack.shift();
                 renderStack();
             }
             showStatus('Berhasil pop "' + data.value + '" dari stack!', 'success');
@@ -123,10 +123,10 @@ function handlePeek() {
     apiCall('/api/stack/peek').then(function (data) {
         if (data.success) {
             showStatus('Elemen puncak: "' + data.value + '"', 'info');
-            var last = stackContainer.lastElementChild;
-            if (last) {
-                last.classList.add('peeking');
-                setTimeout(function () { last.classList.remove('peeking'); }, 1500);
+            var first = stackContainer.firstElementChild;
+            if (first) {
+                first.classList.add('peeking');
+                setTimeout(function () { first.classList.remove('peeking'); }, 1500);
             }
             loadHistory();
         } else {
@@ -144,13 +144,13 @@ function renderStack() {
         var color = COLORS[i % COLORS.length];
         el.style.borderColor = color;
         el.style.color = color;
-        if (i === currentStack.length - 1) {
+        if (i === 0) {
             el.classList.add('top');
             el.style.boxShadow = '0 0 15px ' + color;
         }
         stackContainer.appendChild(el);
     }
-    var top = currentStack.length > 0 ? currentStack[currentStack.length - 1] : 'null';
+    var top = currentStack.length > 0 ? currentStack[0] : 'null';
     stackInfo.textContent = 'Ukuran: ' + currentStack.length + ' | Atas: ' + top;
 }
 
