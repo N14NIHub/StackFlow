@@ -71,10 +71,10 @@ function handlePush() {
     showStatus('Push "' + value + '"...', 'loading');
     apiCall('/api/stack/push', 'POST', { value: value }).then(function (data) {
         if (data.success) {
-            currentStack.push(value);
+            currentStack.unshift(value);
             renderStack();
-            var last = stackContainer.lastElementChild;
-            if (last) last.classList.add('push-anim');
+            var first = stackContainer.firstElementChild;
+            if (first) first.classList.add('push-anim');
             showStatus('Berhasil push "' + value + '" ke stack!', 'success');
             pushValue.value = '';
             loadHistory();
