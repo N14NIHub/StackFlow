@@ -160,10 +160,8 @@ section h2 {
 }
 
 .stack-element.top {
-    background: #3e3d32;
-    color: #F92672;
-    border-color: #F8F8F2;
-    box-shadow: 0 0 15px rgba(249, 38, 114, 0.4);
+    background: rgba(249, 38, 114, 0.15);
+    box-shadow: 0 0 15px currentColor;
 }
 
 .control-group {
