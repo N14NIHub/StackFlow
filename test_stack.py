@@ -125,14 +125,16 @@ class TestStack:
         stack = Stack()
         stack.from_list(["A", "B", "C"])
         assert stack.getSize() == 3
-        assert stack.peek() == "C"
+        assert stack.peek() == "A"
+        assert stack.to_list() == ["A", "B", "C"]
 
     def test_from_list_replaces_existing(self):
         stack = Stack()
         stack.push("X")
         stack.from_list(["A", "B"])
         assert stack.getSize() == 2
-        assert stack.peek() == "B"
+        assert stack.peek() == "A"
+        assert stack.to_list() == ["A", "B"]
 
     def test_push_pop_cycle(self):
         stack = Stack()

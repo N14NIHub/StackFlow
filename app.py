@@ -96,8 +96,12 @@ class Stack:
     def from_list(self, lst):
         self.head.next = None
         self.size = 0
+        prev = self.head
         for item in lst:
-            self.push(item)
+            node = Node(item)
+            prev.next = node
+            prev = node
+            self.size += 1
 
 
 # --- Helper: load / save from database ---
