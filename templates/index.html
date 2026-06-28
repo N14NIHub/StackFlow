@@ -18,23 +18,40 @@
 
         <main>
             <div class="main-grid">
-                <section class="controls">
-                    <h2>Operasi</h2>
-                    <div class="control-group">
-                        <label for="pushValue">Nilai Push:</label>
-                        <div class="input-group">
-                            <input type="text" id="pushValue" placeholder="Masukkan nilai...">
-                            <button id="pushBtn" class="btn btn-primary">Push</button>
+                <div class="left-column">
+                    <section class="controls">
+                        <h2>Operasi</h2>
+                        <div class="control-group">
+                            <label for="pushValue">Nilai Push:</label>
+                            <div class="input-group">
+                                <input type="text" id="pushValue" placeholder="Masukkan nilai...">
+                                <button id="pushBtn" class="btn btn-primary">Push</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="control-group">
-                        <button id="popBtn" class="btn btn-danger">Pop</button>
-                        <button id="peekBtn" class="btn btn-secondary">Peek</button>
-                    </div>
-                    <div class="control-group">
-                        <div class="status" id="status">Siap</div>
-                    </div>
-                </section>
+                        <div class="control-group">
+                            <button id="popBtn" class="btn btn-danger">Pop</button>
+                            <button id="peekBtn" class="btn btn-secondary">Peek</button>
+                        </div>
+                        <div class="control-group">
+                            <div class="status" id="status">Siap</div>
+                        </div>
+                    </section>
+
+                    <section class="history">
+                        <h2>Riwayat Operasi</h2>
+                        <div class="terminal-container">
+                            <div class="terminal-header">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <button id="clearHistoryBtn" class="btn-clear" title="Hapus Riwayat">&#10005;</button>
+                            </div>
+                            <div class="terminal-content" id="historyDisplay">
+                                <div class="history-list" id="historyList"></div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
 
                 <section class="stack-visualization">
                     <h2>Stack Saat Ini</h2>
@@ -55,21 +72,6 @@
                     </div>
                 </section>
             </div>
-
-            <section class="history">
-                <h2>Riwayat Operasi</h2>
-                <div class="terminal-container">
-                    <div class="terminal-header">
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <button id="clearHistoryBtn" class="btn-clear" title="Hapus Riwayat">&#10005;</button>
-                    </div>
-                    <div class="terminal-content" id="historyDisplay">
-                        <div class="history-list" id="historyList"></div>
-                    </div>
-                </div>
-            </section>
         </main>
 
         <footer>
