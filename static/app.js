@@ -226,7 +226,11 @@ function renderHistory() {
 }
 
 // --- Status ---
-function showStatus(message, type = 'info') {
+let statusTimer = null;
+
+function showStatus(message, type = 'info', autoReset = true) {
+    if (statusTimer) clearTimeout(statusTimer);
+
     statusDiv.textContent = message;
 
     switch (type) {
@@ -241,6 +245,13 @@ function showStatus(message, type = 'info') {
             break;
         default:
             statusDiv.style.color = '#66D9EF';
+    }
+
+    if (autoReset && type !== 'loading') {
+        statusTimer = setTimeout(() => {
+            statusDiv.textContent = 'Siap';
+            statusDiv.style.color = '#66D9EF';
+        }, 2000);
     }
 }
 

@@ -171,8 +171,8 @@ section h2 {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     min-width: 50px;
     text-align: center;
-    animation: pushIn 0.3s ease-out;
     border: 2px solid #F8F8F2;
+    animation: popIn 0.25s ease-out both;
 }
 
 .stack-element.poping {
@@ -361,14 +361,14 @@ footer {
     background: #A6E22E;
 }
 
-@keyframes pushIn {
+@keyframes popIn {
     from {
-        transform: translateY(20px);
-        opacity: 0;
+        opacity: 0.5;
+        transform: translateY(5px);
     }
     to {
-        transform: translateY(0);
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
