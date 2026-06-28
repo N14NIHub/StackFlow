@@ -14,15 +14,12 @@ const popBtn = document.getElementById('popBtn');
 const peekBtn = document.getElementById('peekBtn');
 const statusDiv = document.getElementById('status');
 const historyList = document.getElementById('historyList');
-const clearHistoryBtn = document.getElementById('clearHistoryBtn');
-
 document.addEventListener('DOMContentLoaded', function () {
     loadStack();
     loadHistory();
     pushBtn.addEventListener('click', handlePush);
     popBtn.addEventListener('click', handlePop);
     peekBtn.addEventListener('click', handlePeek);
-    clearHistoryBtn.addEventListener('click', handleClearHistory);
     pushValue.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') handlePush();
     });
@@ -76,6 +73,8 @@ function handlePush() {
         if (data.success) {
             currentStack.push(value);
             renderStack();
+            var last = stackContainer.lastElementChild;
+            if (last) last.classList.add('push-anim');
             showStatus('Berhasil push "' + value + '" ke stack!', 'success');
             pushValue.value = '';
             loadHistory();
@@ -96,8 +95,17 @@ function handlePop() {
     showStatus('Pop...', 'loading');
     apiCall('/api/stack/pop', 'POST').then(function (data) {
         if (data.success) {
-            currentStack.pop();
-            renderStack();
+            var topEl = stackContainer.lastElementChild;
+            if (topEl) {
+                topEl.classList.add('pop-anim');
+                setTimeout(function () {
+                    currentStack.pop();
+                    renderStack();
+                }, 250);
+            } else {
+                currentStack.pop();
+                renderStack();
+            }
             showStatus('Berhasil pop "' + data.value + '" dari stack!', 'success');
             loadHistory();
         } else {
@@ -124,14 +132,6 @@ function handlePeek() {
         } else {
             showStatus('Gagal: ' + data.error, 'error');
         }
-    });
-}
-
-function handleClearHistory() {
-    apiCall('/api/history', 'DELETE').then(function () {
-        history = [];
-        renderHistory();
-        showStatus('Riwayat dihapus!', 'success');
     });
 }
 
