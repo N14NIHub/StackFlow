@@ -1,4 +1,4 @@
-/* StackFlow - Minimal Terminal-style CSS */
+/* StackFlow - Monokai Theme CSS */
 * {
     margin: 0;
     padding: 0;
@@ -7,8 +7,8 @@
 
 body {
     font-family: 'Courier New', Courier, monospace;
-    background: #1a1a1a;
-    color: #00ff00;
+    background: #272822;
+    color: #F8F8F2;
     line-height: 1.6;
     padding: 20px;
 }
@@ -16,29 +16,29 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    background: #2d2d2d;
-    border: 2px solid #00ff00;
+    background: #1e1f1c;
+    border: 2px solid #75715E;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    box-shadow: 0 0 20px rgba(166, 226, 46, 0.15);
 }
 
 header {
-    background: #333;
+    background: #3e3d32;
     padding: 20px;
-    border-bottom: 2px solid #00ff00;
+    border-bottom: 2px solid #A6E22E;
     text-align: center;
 }
 
 header h1 {
-    color: #00ff00;
+    color: #A6E22E;
     font-size: 2em;
     margin-bottom: 5px;
-    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    text-shadow: 0 0 10px rgba(166, 226, 46, 0.4);
 }
 
 header p {
-    color: #888;
+    color: #75715E;
     font-style: italic;
 }
 
@@ -55,56 +55,56 @@ main {
 
 section {
     margin-bottom: 30px;
-    background: #1e1e1e;
-    border: 1px solid #333;
+    background: #1e1f1c;
+    border: 1px solid #3e3d32;
     border-radius: 5px;
     overflow: hidden;
 }
 
 section h2 {
-    background: #333;
+    background: #3e3d32;
     padding: 10px 15px;
-    color: #00ff00;
-    border-bottom: 1px solid #444;
+    color: #A6E22E;
+    border-bottom: 1px solid #75715E;
 }
 
 .stack-visualization {
-    border-color: #00ff00;
+    border-color: #A6E22E;
 }
 
 .controls {
-    border-color: #ff9900;
+    border-color: #FD971F;
 }
 
 .history {
-    border-color: #9966ff;
+    border-color: #AE81FF;
 }
 
-terminal-container {
-    background: #1a1a1a;
-    border-top: 1px solid #333;
+.terminal-container {
+    background: #272822;
+    border-top: 1px solid #3e3d32;
     padding: 15px;
 }
 
-terminal-header {
+.terminal-header {
     display: flex;
     gap: 8px;
     margin-bottom: 10px;
 }
 
-terminal-header span {
+.terminal-header span {
     width: 12px;
     height: 12px;
     border-radius: 50%;
     display: inline-block;
 }
 
-terminal-header .dot:nth-child(1) { background: #ff5f56; }
-terminal-header .dot:nth-child(2) { background: #ffbd2e; }
-terminal-header .dot:nth-child(3) { background: #27c93f; }
+.terminal-header .dot:nth-child(1) { background: #F92672; }
+.terminal-header .dot:nth-child(2) { background: #E6DB74; }
+.terminal-header .dot:nth-child(3) { background: #A6E22E; }
 
-terminal-content {
-    background: #000;
+.terminal-content {
+    background: #1e1f1c;
     padding: 15px;
     border-radius: 3px;
     font-family: 'Courier New', Courier, monospace;
@@ -113,18 +113,18 @@ terminal-content {
     overflow: hidden;
 }
 
-terminal-footer {
+.terminal-footer {
     padding: 10px 15px;
-    background: #333;
+    background: #3e3d32;
     font-size: 0.9em;
-    color: #ccc;
+    color: #75715E;
 }
 
 .stack-viewport {
     height: 100px;
     overflow-y: auto;
-    border: 1px solid #333;
-    background: #111;
+    border: 1px solid #3e3d32;
+    background: #1e1f1c;
     border-radius: 3px;
     padding: 10px;
 }
@@ -139,8 +139,8 @@ terminal-footer {
 }
 
 .stack-element {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: #3e3d32;
+    color: #F8F8F2;
     padding: 10px 15px;
     border-radius: 5px;
     font-weight: bold;
@@ -148,7 +148,7 @@ terminal-footer {
     min-width: 50px;
     text-align: center;
     animation: pushIn 0.3s ease-out;
-    border: 2px solid #00ff00;
+    border: 2px solid #A6E22E;
 }
 
 .stack-element.poping {
@@ -160,13 +160,15 @@ terminal-footer {
 }
 
 .stack-element.top {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    box-shadow: 0 0 15px rgba(245, 87, 108, 0.5);
+    background: #3e3d32;
+    color: #F92672;
+    border-color: #F92672;
+    box-shadow: 0 0 15px rgba(249, 38, 114, 0.4);
 }
 
 .control-group {
     padding: 15px;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid #3e3d32;
     display: flex;
     align-items: center;
     gap: 15px;
@@ -178,7 +180,7 @@ terminal-footer {
 }
 
 .control-group label {
-    color: #00ff00;
+    color: #A6E22E;
     font-weight: bold;
     min-width: 100px;
 }
@@ -191,9 +193,9 @@ terminal-footer {
 }
 
 .input-group input {
-    background: #111;
-    border: 1px solid #444;
-    color: #00ff00;
+    background: #1e1f1c;
+    border: 1px solid #75715E;
+    color: #F8F8F2;
     padding: 8px 12px;
     border-radius: 3px;
     font-family: 'Courier New', Courier, monospace;
@@ -202,8 +204,12 @@ terminal-footer {
 
 .input-group input:focus {
     outline: none;
-    border-color: #00ff00;
-    box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+    border-color: #A6E22E;
+    box-shadow: 0 0 5px rgba(166, 226, 46, 0.3);
+}
+
+.input-group input::placeholder {
+    color: #75715E;
 }
 
 .btn {
@@ -226,7 +232,7 @@ terminal-footer {
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.3);
     transform: translate(-50%, -50%);
     transition: width 0.6s, height 0.6s;
 }
@@ -237,50 +243,40 @@ terminal-footer {
 }
 
 .btn-primary {
-    background: #007bff;
-    color: white;
+    background: #A6E22E;
+    color: #272822;
 }
 
 .btn-primary:hover {
-    background: #0056b3;
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    background: #8ec920;
+    box-shadow: 0 0 10px rgba(166, 226, 46, 0.5);
 }
 
 .btn-danger {
-    background: #dc3545;
-    color: white;
+    background: #F92672;
+    color: #272822;
 }
 
 .btn-danger:hover {
-    background: #c82333;
-    box-shadow: 0 0 10px rgba(220, 53, 69, 0.5);
+    background: #d91f60;
+    box-shadow: 0 0 10px rgba(249, 38, 114, 0.5);
 }
 
 .btn-secondary {
-    background: #6c757d;
-    color: white;
+    background: #66D9EF;
+    color: #272822;
 }
 
 .btn-secondary:hover {
-    background: #5a6268;
-    box-shadow: 0 0 10px rgba(108, 117, 125, 0.5);
-}
-
-.btn-warning {
-    background: #ffc107;
-    color: #212529;
-}
-
-.btn-warning:hover {
-    background: #e0a800;
-    box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+    background: #52c0de;
+    box-shadow: 0 0 10px rgba(102, 217, 239, 0.5);
 }
 
 .status {
     padding: 10px 15px;
-    background: #333;
+    background: #3e3d32;
     border-radius: 3px;
-    color: #00ff00;
+    color: #A6E22E;
     font-family: 'Courier New', Courier, monospace;
 }
 
@@ -291,10 +287,10 @@ terminal-footer {
 
 .history-item {
     padding: 8px 12px;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #3e3d32;
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.9em;
-    color: #ccc;
+    color: #F8F8F2;
 }
 
 .history-item:last-child {
@@ -302,28 +298,46 @@ terminal-footer {
 }
 
 .history-item.push {
-    color: #27c93f;
+    color: #A6E22E;
 }
 
 .history-item.pop {
-    color: #ff5f56;
+    color: #F92672;
 }
 
 .history-item.peek {
-    color: #ffbd2e;
-}
-
-.history-item.reset {
-    color: #9966ff;
+    color: #E6DB74;
 }
 
 footer {
-    background: #333;
+    background: #3e3d32;
     padding: 15px;
     text-align: center;
-    border-top: 1px solid #444;
-    color: #888;
+    border-top: 1px solid #75715E;
+    color: #75715E;
     font-size: 0.9em;
+}
+
+/* Scrollbar Monokai */
+.stack-viewport::-webkit-scrollbar,
+.history-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.stack-viewport::-webkit-scrollbar-track,
+.history-list::-webkit-scrollbar-track {
+    background: #1e1f1c;
+}
+
+.stack-viewport::-webkit-scrollbar-thumb,
+.history-list::-webkit-scrollbar-thumb {
+    background: #75715E;
+    border-radius: 4px;
+}
+
+.stack-viewport::-webkit-scrollbar-thumb:hover,
+.history-list::-webkit-scrollbar-thumb:hover {
+    background: #A6E22E;
 }
 
 @keyframes pushIn {
@@ -353,7 +367,7 @@ footer {
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     }
     to {
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        box-shadow: 0 0 15px rgba(230, 219, 116, 0.6);
     }
 }
 
@@ -391,7 +405,6 @@ footer {
         margin-bottom: 15px;
     }
 
-    /* Mobile layout order (matches backup): Stack first, then Operations */
     .controls {
         order: 2;
     }

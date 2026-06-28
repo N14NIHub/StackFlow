@@ -12,20 +12,19 @@ const pushValue = document.getElementById('pushValue');
 const pushBtn = document.getElementById('pushBtn');
 const popBtn = document.getElementById('popBtn');
 const peekBtn = document.getElementById('peekBtn');
-const resetBtn = document.getElementById('resetBtn');
 const statusDiv = document.getElementById('status');
 const historyList = document.getElementById('historyList');
 
-// --- Color Palette for Elements ---
+// --- Color Palette (Monokai) ---
 const COLORS = [
-    'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-    'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-    'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-    'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-    'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-    'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)',
-    'linear-gradient(135deg, #fccb90 0%, #d57eeb 100%)',
-    'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)'
+    '#A6E22E',
+    '#F92672',
+    '#66D9EF',
+    '#FD971F',
+    '#AE81FF',
+    '#E6DB74',
+    '#F8F8F2',
+    '#A6E22E'
 ];
 
 // --- Initialize ---
@@ -39,7 +38,6 @@ function setupEventListeners() {
     pushBtn.addEventListener('click', handlePush);
     popBtn.addEventListener('click', handlePop);
     peekBtn.addEventListener('click', handlePeek);
-    resetBtn.addEventListener('click', handleReset);
     pushValue.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') handlePush();
     });
@@ -103,7 +101,7 @@ async function handlePush() {
         renderStack(data.size);
         showStatus(`Berhasil push "${value}" ke stack!`, 'success');
         pushValue.value = '';
-        loadHistory(); // refresh history from database
+        loadHistory();
     } else {
         showStatus(`Error: ${data.error}`, 'error');
     }
@@ -135,7 +133,7 @@ async function handlePop() {
         currentStack.pop();
         renderStack(data.size);
         showStatus(`Berhasil pop "${data.value}" dari stack!`, 'success');
-        loadHistory(); // refresh history from database
+        loadHistory();
     } else {
         showStatus(`Error: ${data.error}`, 'error');
     }
@@ -160,33 +158,10 @@ async function handlePeek() {
             lastElement.classList.add('peeking');
             setTimeout(() => lastElement.classList.remove('peeking'), 1500);
         }
-        loadHistory(); // refresh history from database
+        loadHistory();
     } else {
         showStatus(`Error: ${data.error}`, 'error');
     }
-}
-
-async function handleReset() {
-    if (currentStack.length === 0) {
-        showStatus('Stack sudah kosong!', 'info');
-        return;
-    }
-
-    resetBtn.disabled = true;
-    showStatus('Reset stack...', 'loading');
-
-    const data = await apiCall('/api/stack/reset', 'POST');
-
-    if (data.success) {
-        currentStack = [];
-        renderStack(0);
-        showStatus('Stack berhasil di-reset!', 'success');
-        loadHistory(); // refresh history from database
-    } else {
-        showStatus(`Error: ${data.error}`, 'error');
-    }
-
-    resetBtn.disabled = false;
 }
 
 // --- Rendering ---
@@ -200,7 +175,9 @@ function renderStack(size) {
 
         // Color based on index
         const colorIndex = index % COLORS.length;
-        el.style.background = COLORS[colorIndex];
+        el.style.background = 'transparent';
+        el.style.borderColor = COLORS[colorIndex];
+        el.style.color = COLORS[colorIndex];
 
         // Mark top element
         if (index === currentStack.length - 1) {
@@ -243,13 +220,9 @@ function renderHistory() {
                 icon = '[?]';
                 action = `Peek -> "${entry.value}"`;
                 break;
-            case 'reset':
-                icon = '[R]';
-                action = 'Reset stack';
-                break;
         }
 
-        item.innerHTML = `<span style="color:#666">${entry.time}</span> ${icon} ${action}`;
+        item.innerHTML = `<span style="color:#75715E">${entry.time}</span> ${icon} ${action}`;
         historyList.appendChild(item);
     });
 }
@@ -260,16 +233,16 @@ function showStatus(message, type = 'info') {
 
     switch (type) {
         case 'success':
-            statusDiv.style.color = '#27c93f';
+            statusDiv.style.color = '#A6E22E';
             break;
         case 'error':
-            statusDiv.style.color = '#ff5f56';
+            statusDiv.style.color = '#F92672';
             break;
         case 'loading':
-            statusDiv.style.color = '#ffbd2e';
+            statusDiv.style.color = '#E6DB74';
             break;
         default:
-            statusDiv.style.color = '#00ff00';
+            statusDiv.style.color = '#66D9EF';
     }
 }
 
