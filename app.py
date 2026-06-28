@@ -1,5 +1,4 @@
-# StackFlow - Interactive Stack Visualization
-# A web-based application to demonstrate Stack (LIFO) operations
+# StackFlow - Visualisasi Stack Interaktif
 
 from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
@@ -9,10 +8,11 @@ import json
 app = Flask(__name__)
 
 # Database configuration
-# Local: SQLite | Production: PostgreSQL via DATABASE_URL
 DATABASE_URL = os.environ.get('DATABASE_URL', 'sqlite:///stackflow.db')
 if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+if DATABASE_URL.startswith("postgresql://") and "sslmode" not in DATABASE_URL:
+    DATABASE_URL += "?sslmode=require"
 
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -22,11 +22,8 @@ db = SQLAlchemy(app)
 
 # --- Database Model ---
 class StackState(db.Model):
-    """Stores the shared stack as a JSON list."""
     id = db.Column(db.Integer, primary_key=True)
     stack_data = db.Column(db.Text, default='[]')
-    updated_at = db.Column(db.DateTime, server_default=db.func.now(),
-                           onupdate=db.func.now())
 
     def to_list(self):
         return json.loads(self.stack_data)
@@ -36,7 +33,6 @@ class StackState(db.Model):
 
 
 class OperationLog(db.Model):
-    """Logs every operation performed on the stack."""
     id = db.Column(db.Integer, primary_key=True)
     op_type = db.Column(db.String(10), nullable=False)
     value = db.Column(db.String(500), nullable=True)
@@ -44,7 +40,7 @@ class OperationLog(db.Model):
     timestamp = db.Column(db.DateTime, server_default=db.func.now())
 
 
-# --- Stack Logic (LinkedList-based, mirroring PDF) ---
+# --- Stack Logic (LinkedList-based) ---
 class Node:
     def __init__(self, value):
         self.value = value
@@ -106,7 +102,7 @@ class Stack:
 
 # --- Helper: load / save from database ---
 def load_stack():
-    state = StackState.query.get(1)
+    state = db.session.get(StackState, 1)
     if state is None:
         state = StackState(id=1, stack_data='[]')
         db.session.add(state)
@@ -117,7 +113,7 @@ def load_stack():
 
 
 def save_stack(stack):
-    state = StackState.query.get(1)
+    state = db.session.get(StackState, 1)
     if state is None:
         state = StackState(id=1)
         db.session.add(state)
