@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StackFlow - Interactive Stack Visualization</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>StackFlow</h1>
+            <p>Interactive Stack (LIFO) Visualization</p>
+        </header>
+
+        <main>
+            <div class="main-grid">
+                <section class="controls">
+                    <h2>Operations</h2>
+                    
+                    <div class="control-group">
+                        <label for="pushValue">Push Value:</label>
+                        <div class="input-group">
+                            <input type="text" id="pushValue" placeholder="Enter value...">
+                            <button id="pushBtn" class="btn btn-primary">Push</button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <button id="popBtn" class="btn btn-danger">Pop</button>
+                        <button id="peekBtn" class="btn btn-secondary">Peek</button>
+                        <button id="resetBtn" class="btn btn-warning">Reset</button>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="status" id="status">Ready</div>
+                    </div>
+                </section>
+
+                <section class="stack-visualization">
+                    <h2>Current Stack</h2>
+                    <div class="terminal-container">
+                        <div class="terminal-header">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <div class="terminal-content" id="stackDisplay">
+                            <div class="stack-viewport">
+                                <div class="stack-container" id="stackContainer">
+                                    <!-- Stack elements will be dynamically added here -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="terminal-footer">
+                            <span id="stackInfo">Size: 0 | Top: null</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <section class="history">
+                <h2>Operation History</h2>
+                <div class="terminal-container">
+                    <div class="terminal-header">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <div class="terminal-content history-content" id="historyDisplay">
+                        <div class="history-list" id="historyList">
+                            <!-- History items will be added here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>StackFlow - Visualisasi Stack (TUMPUKAN)</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

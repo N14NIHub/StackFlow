@@ -1,0 +1,12 @@
+# StackFlow
+__pycache__/
+*.pyc
+*.pyo
+*.db
+instance/
+stack_data.json
+.env
+.venv/
+venv/
+node_modules/
+.vercel/
