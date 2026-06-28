@@ -166,13 +166,13 @@ function renderStack(size) {
         const color = COLORS[colorIndex];
         el.style.borderColor = color;
         el.style.color = color;
+        el.style.backgroundColor = `${color}22`;
 
         // Mark top element
         if (index === currentStack.length - 1) {
             el.classList.add('top');
-            el.style.boxShadow = `0 0 15px ${color}66`;
-        } else {
-            el.style.boxShadow = `0 2px 5px rgba(0,0,0,0.3)`;
+            el.style.boxShadow = `0 0 15px ${color}`;
+            el.style.backgroundColor = `${color}33`;
         }
 
         stackContainer.appendChild(el);

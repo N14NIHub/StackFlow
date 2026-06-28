@@ -163,7 +163,7 @@ section h2 {
 }
 
 .stack-element {
-    background: transparent;
+    background: #3e3d32;
     color: #F8F8F2;
     padding: 10px 15px;
     border-radius: 5px;
@@ -184,7 +184,7 @@ section h2 {
 }
 
 .stack-element.top {
-    font-weight: bold;
+    box-shadow: 0 0 15px currentColor;
 }
 
 .control-group {

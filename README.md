@@ -52,7 +52,7 @@ StackFlow/
     index.html       # Main page
 ```
 
-## Stack Operations (from PDF)
+## Stack Operations
 
 | Operation | Description |
 |-----------|-------------|
