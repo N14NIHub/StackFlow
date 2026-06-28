@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StackFlow - Interactive Stack Visualization</title>
+    <title>StackFlow - Visualisasi Stack Interaktif</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
         <header>
             <h1>StackFlow</h1>
-            <p>Interactive Stack (LIFO) Visualization</p>
+            <p>Visualisasi Stack (TUMPUKAN) Interaktif</p>
         </header>
 
         <main>
             <div class="main-grid">
                 <section class="controls">
-                    <h2>Operations</h2>
-                    
+                    <h2>Operasi</h2>
+
                     <div class="control-group">
-                        <label for="pushValue">Push Value:</label>
+                        <label for="pushValue">Nilai Push:</label>
                         <div class="input-group">
-                            <input type="text" id="pushValue" placeholder="Enter value...">
+                            <input type="text" id="pushValue" placeholder="Masukkan nilai...">
                             <button id="pushBtn" class="btn btn-primary">Push</button>
                         </div>
                     </div>
@@ -32,12 +32,12 @@
                     </div>
 
                     <div class="control-group">
-                        <div class="status" id="status">Ready</div>
+                        <div class="status" id="status">Siap</div>
                     </div>
                 </section>
 
                 <section class="stack-visualization">
-                    <h2>Current Stack</h2>
+                    <h2>Stack Saat Ini</h2>
                     <div class="terminal-container">
                         <div class="terminal-header">
                             <span class="dot"></span>
@@ -47,19 +47,18 @@
                         <div class="terminal-content" id="stackDisplay">
                             <div class="stack-viewport">
                                 <div class="stack-container" id="stackContainer">
-                                    <!-- Stack elements will be dynamically added here -->
                                 </div>
                             </div>
                         </div>
                         <div class="terminal-footer">
-                            <span id="stackInfo">Size: 0 | Top: null</span>
+                            <span id="stackInfo">Ukuran: 0 | Atas: null</span>
                         </div>
                     </div>
                 </section>
             </div>
 
             <section class="history">
-                <h2>Operation History</h2>
+                <h2>Riwayat Operasi</h2>
                 <div class="terminal-container">
                     <div class="terminal-header">
                         <span class="dot"></span>
@@ -68,7 +67,6 @@
                     </div>
                     <div class="terminal-content history-content" id="historyDisplay">
                         <div class="history-list" id="historyList">
-                            <!-- History items will be added here -->
                         </div>
                     </div>
                 </div>

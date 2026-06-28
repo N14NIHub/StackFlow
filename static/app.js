@@ -1,5 +1,5 @@
 // StackFlow - Frontend JavaScript
-// Handles UI interactions, animations, and API calls
+// Menangani interaksi UI, animasi, dan panggilan API
 
 // --- State ---
 let currentStack = [];
@@ -14,18 +14,6 @@ const popBtn = document.getElementById('popBtn');
 const peekBtn = document.getElementById('peekBtn');
 const statusDiv = document.getElementById('status');
 const historyList = document.getElementById('historyList');
-
-// --- Color Palette (Monokai) ---
-const COLORS = [
-    '#A6E22E',
-    '#F92672',
-    '#66D9EF',
-    '#FD971F',
-    '#AE81FF',
-    '#E6DB74',
-    '#F8F8F2',
-    '#A6E22E'
-];
 
 // --- Initialize ---
 document.addEventListener('DOMContentLoaded', () => {
@@ -103,7 +91,7 @@ async function handlePush() {
         pushValue.value = '';
         loadHistory();
     } else {
-        showStatus(`Error: ${data.error}`, 'error');
+        showStatus(`Gagal: ${data.error}`, 'error');
     }
 
     pushBtn.disabled = false;
@@ -120,7 +108,6 @@ async function handlePop() {
     const topValue = currentStack[currentStack.length - 1];
     showStatus(`Pop "${topValue}"...`, 'loading');
 
-    // Animate pop
     const lastElement = stackContainer.lastElementChild;
     if (lastElement) {
         lastElement.classList.add('poping');
@@ -135,7 +122,7 @@ async function handlePop() {
         showStatus(`Berhasil pop "${data.value}" dari stack!`, 'success');
         loadHistory();
     } else {
-        showStatus(`Error: ${data.error}`, 'error');
+        showStatus(`Gagal: ${data.error}`, 'error');
     }
 
     popBtn.disabled = false;
@@ -150,9 +137,8 @@ async function handlePeek() {
     const data = await apiCall('/api/stack/peek');
 
     if (data.success) {
-        showStatus(`Top element: "${data.value}"`, 'info');
+        showStatus(`Elemen puncak: "${data.value}"`, 'info');
 
-        // Highlight top element
         const lastElement = stackContainer.lastElementChild;
         if (lastElement) {
             lastElement.classList.add('peeking');
@@ -160,7 +146,7 @@ async function handlePeek() {
         }
         loadHistory();
     } else {
-        showStatus(`Error: ${data.error}`, 'error');
+        showStatus(`Gagal: ${data.error}`, 'error');
     }
 }
 
@@ -172,12 +158,6 @@ function renderStack(size) {
         const el = document.createElement('div');
         el.className = 'stack-element';
         el.textContent = value;
-
-        // Color based on index
-        const colorIndex = index % COLORS.length;
-        el.style.background = 'transparent';
-        el.style.borderColor = COLORS[colorIndex];
-        el.style.color = COLORS[colorIndex];
 
         // Mark top element
         if (index === currentStack.length - 1) {
@@ -194,7 +174,7 @@ function updateInfo(size) {
     const top = currentStack.length > 0
         ? currentStack[currentStack.length - 1]
         : 'null';
-    stackInfo.textContent = `Size: ${size || 0} | Top: ${top}`;
+    stackInfo.textContent = `Ukuran: ${size || 0} | Atas: ${top}`;
 }
 
 // --- History ---

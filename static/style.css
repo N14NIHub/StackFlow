@@ -139,7 +139,7 @@ section h2 {
 }
 
 .stack-element {
-    background: #3e3d32;
+    background: transparent;
     color: #F8F8F2;
     padding: 10px 15px;
     border-radius: 5px;
@@ -148,7 +148,7 @@ section h2 {
     min-width: 50px;
     text-align: center;
     animation: pushIn 0.3s ease-out;
-    border: 2px solid #A6E22E;
+    border: 2px solid #F8F8F2;
 }
 
 .stack-element.poping {
@@ -162,7 +162,7 @@ section h2 {
 .stack-element.top {
     background: #3e3d32;
     color: #F92672;
-    border-color: #F92672;
+    border-color: #F8F8F2;
     box-shadow: 0 0 15px rgba(249, 38, 114, 0.4);
 }
 
