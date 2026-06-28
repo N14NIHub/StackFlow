@@ -163,7 +163,7 @@ section h2 {
 
 .stack-container {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     gap: 4px;
     align-items: center;
 }
