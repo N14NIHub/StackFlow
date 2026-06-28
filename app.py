@@ -212,6 +212,13 @@ def api_history():
     return jsonify(result)
 
 
+@app.route('/api/history', methods=['DELETE'])
+def api_clear_history():
+    OperationLog.query.delete()
+    db.session.commit()
+    return jsonify({'success': True})
+
+
 # --- Create tables on startup ---
 with app.app_context():
     db.create_all()

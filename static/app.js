@@ -14,6 +14,7 @@ const popBtn = document.getElementById('popBtn');
 const peekBtn = document.getElementById('peekBtn');
 const statusDiv = document.getElementById('status');
 const historyList = document.getElementById('historyList');
+const clearHistoryBtn = document.getElementById('clearHistoryBtn');
 
 // --- Initialize ---
 document.addEventListener('DOMContentLoaded', () => {
@@ -26,6 +27,7 @@ function setupEventListeners() {
     pushBtn.addEventListener('click', handlePush);
     popBtn.addEventListener('click', handlePop);
     peekBtn.addEventListener('click', handlePeek);
+    clearHistoryBtn.addEventListener('click', handleClearHistory);
     pushValue.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') handlePush();
     });
@@ -164,12 +166,13 @@ function renderStack(size) {
         const color = COLORS[colorIndex];
         el.style.borderColor = color;
         el.style.color = color;
-        el.style.boxShadow = `0 0 12px ${color}40`;
 
         // Mark top element
         if (index === currentStack.length - 1) {
             el.classList.add('top');
-            el.style.background = `${color}20`;
+            el.style.boxShadow = `0 0 15px ${color}66`;
+        } else {
+            el.style.boxShadow = `0 2px 5px rgba(0,0,0,0.3)`;
         }
 
         stackContainer.appendChild(el);
@@ -186,6 +189,13 @@ function updateInfo(size) {
 }
 
 // --- History ---
+async function handleClearHistory() {
+    await apiCall('/api/history', 'DELETE');
+    history = [];
+    renderHistory();
+    showStatus('Riwayat dihapus!', 'success');
+}
+
 function renderHistory() {
     historyList.innerHTML = '';
 

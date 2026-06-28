@@ -90,6 +90,30 @@ section h2 {
     display: flex;
     gap: 8px;
     margin-bottom: 10px;
+    align-items: center;
+}
+
+.btn-clear {
+    margin-left: auto;
+    background: transparent;
+    border: 1px solid #75715E;
+    color: #75715E;
+    width: 24px;
+    height: 24px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 1;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.btn-clear:hover {
+    color: #F92672;
+    border-color: #F92672;
 }
 
 .terminal-header span {
@@ -160,8 +184,7 @@ section h2 {
 }
 
 .stack-element.top {
-    background: rgba(249, 38, 114, 0.15);
-    box-shadow: 0 0 15px currentColor;
+    font-weight: bold;
 }
 
 .control-group {
