@@ -179,6 +179,9 @@ section h2 {
     font-size: 0.95em;
     text-align: center;
     border: 2px solid #F8F8F2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .stack-element.top {
