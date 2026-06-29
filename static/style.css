@@ -169,8 +169,8 @@ section h2 {
 }
 
 .stack-element {
-    width: 100%;
-    max-width: 180px;
+    width: fit-content;
+    max-width: 100%;
     background: #3e3d32;
     color: #F8F8F2;
     padding: 10px 12px;
@@ -179,9 +179,7 @@ section h2 {
     font-size: 0.95em;
     text-align: center;
     border: 2px solid #F8F8F2;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    word-break: break-all;
 }
 
 .stack-element.top {
